@@ -40,6 +40,32 @@ The `.onion` address is a **56-character Base32 string** derived from the Ed2551
 
 ---
 
+## simple version
+install tor and nginx
+```bash
+sudo apt update
+sudo apt install tor
+sudo apt install nginx
+```
+edit tor config
+```bash
+sudo nano /etc/tor/torrc
+```
+uncomment thease lines
+```config
+HiddenServiceDir /var/lib/tor/hidden_service/
+HiddenServicePort 80 127.0.0.1:80
+```
+restart tor
+```bash
+sudo systemctl restart tor
+```
+get your .onion address
+```bash
+sudo cat /var/lib/tor/searxng/hostname
+```
+Remember to add your html to /var/www/html and read the config below to make sure its not on the clearnet
+
 ## Installing Tor
 
 ### Debian / Ubuntu
